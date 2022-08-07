@@ -113,7 +113,8 @@ our key/value service will be a replicated machine, consisting of several key/va
 
 after lab3, we have implemented all part(clerk, service and raft) shown in the diagram of Raft interactions.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ada6d7b-d646-4b1a-afd2-be67f76f2701/Untitled.png)
+![image](https://user-images.githubusercontent.com/65102150/183304044-1ba16da1-4029-4af3-b407-ecfd3bed8dc5.png)
+
 
 this lab have two part:
 
