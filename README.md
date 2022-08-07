@@ -1,7 +1,6 @@
 # MIT-6.824-distributed-system
 ![image](https://user-images.githubusercontent.com/65102150/183294228-fd829199-e2cf-4471-a137-9a746d912332.png)
 
-
 # 课程大纲：
 
 [https://pdos.csail.mit.edu/6.824/schedule.html](https://pdos.csail.mit.edu/6.824/schedule.html)
@@ -51,6 +50,19 @@
 
 # Lab
 
+- [ ]  lab1
+- [ ]  lab2
+    - [ ]  a
+    - [ ]  b
+    - [ ]  c
+    - [ ]  d
+- [ ]  lab3
+    - [ ]  a
+    - [ ]  b
+- [ ]  lab4
+    - [ ]  a
+    - [ ]  b
+
 ## Lab 1
 
 lab: mapreduce
@@ -93,6 +105,35 @@ this lab is splited into four parts:
 
 lab: Fault-tolerant Key/Value Service
 
-introduction:
+introduction: 
+
+in this lab we need to build a fault-tolerant key/value storage service using our Raft library from lab2.
+
+our key/value service will be a replicated machine, consisting of several key/value servers that use Raft for replication.
+
+after lab3, we have implemented all part(clerk, service and raft) shown in the diagram of Raft interactions.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6ada6d7b-d646-4b1a-afd2-be67f76f2701/Untitled.png)
+
+this lab have two part:
+
+- in part A, we will implement key/value service using your Raft implmentation, but without using snapshots.
+- in part B, we will use our snapshot implementation from lab 2-d, which will allow Raft to discard old log entries
 
 ## Lab 4
+
+lab: Sharded key/value service
+
+introduction:
+
+in this lab, we will implement a key/value system that “shards”, or partitions, the keys over a set of replica groups. A shards is a subset of the key/value pairs, for examples, all the keys started with “a” might be one shard, and all the keys started with “b” will be another, etc.
+
+the reason for shards is performance, cause every replica group can handles puts and gets for just a few of the shards, and groups operate in parallel.
+
+our sharded key/value store will have two main componets:
+
+- a set of replica groups
+    - each replica consists of a handful of servers that use Raft to replicate the group’s shards
+- the shard controller
+    - the shards controller decides which replica group should serve each shard
+    - there is a single shard controller for the whole system, implemented as a fault-tolerant service using Raft.
